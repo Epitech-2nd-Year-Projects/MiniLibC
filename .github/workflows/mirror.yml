@@ -10,7 +10,7 @@ jobs:
         name: Push to mirror
         runs-on: ubuntu-latest
 
-        if: github.repository != 'EpitechPromo2028/B-ASM-400-PAR-4-1-asmminilibc-gregor.sternat'
+        if: github.repository != 'EpitechPromo2028/B-ASM-400-PAR-4-1-asmminilibc-gregor.sternat' && github.ref == 'refs/heads/main'
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
