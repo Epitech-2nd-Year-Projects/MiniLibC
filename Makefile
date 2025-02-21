@@ -1,10 +1,11 @@
-SRC	=
+SRC	= src/strlen.asm \
 
 OBJ	= $(SRC:.asm=.o)
 
 NAME	= libasm.so
 
-NASM	= nasm -f elf64
+ASM			= nasm
+ASM_FLAGS	= -f elf64
 
 LD		= ld -shared
 
@@ -14,7 +15,7 @@ $(NAME): $(OBJ)
 	$(LD) -o $@ $^
 
 %.o: %.asm
-	$(NASM) $< -o $@
+	$(ASM) $(ASM_FLAGS) $< -o $@
 
 clean:
 	rm -f $(OBJ)
