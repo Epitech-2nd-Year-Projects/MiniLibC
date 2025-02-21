@@ -1,4 +1,5 @@
 SRC	= src/strlen.asm \
+	  src/strchr.asm
 
 OBJ	= $(SRC:.asm=.o)
 
