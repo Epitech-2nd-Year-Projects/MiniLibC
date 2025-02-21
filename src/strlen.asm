@@ -1,5 +1,5 @@
 section .text
-global _start
+global strlen
 
 strlen:
     xor rax, rax        ; Create counter and initialize it to 0
