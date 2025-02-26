@@ -1,34 +1,22 @@
-SRC	= src/strlen.asm \
-	  src/strchr.asm \
-	  src/strrchr.asm \
-	  src/memset.asm \
-	  src/strcmp.asm \
-	  src/strncmp.asm \
-	  src/strcasecmp.asm
+NAME	= 	libasm.so
 
-OBJ	= $(SRC:.asm=.o)
+RM		?=	rm -f
 
-NAME	= libasm.so
+all: build
 
-ASM			= nasm
-ASM_FLAGS	= -f elf64
+build:
+	@$(MAKE) -C lib
 
-LD		= ld -shared
-
-all: $(NAME)
-
-$(NAME): $(OBJ)
-	$(LD) -o $@ $^
-
-%.o: %.asm
-	$(ASM) $(ASM_FLAGS) $< -o $@
+test: build
+	@export LD_LIBRARY_PATH=$(pwd)
+	go test -v ./...
 
 clean:
-	rm -f $(OBJ)
+	@$(MAKE) -C lib clean
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME) 
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all build clean fclean re
