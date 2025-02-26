@@ -7,6 +7,10 @@ all: build
 build:
 	@$(MAKE) -C lib
 
+test: build
+	@export LD_LIBRARY_PATH=$(pwd)
+	go test -v ./...
+
 clean:
 	@$(MAKE) -C lib clean
 
