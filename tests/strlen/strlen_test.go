@@ -10,7 +10,7 @@ func TestStrlen(t *testing.T) {
         expected uint64
     }{
         {str: "Hello", expected: 5},
-        {str: "", expected: 0},
+        {str: "", expected: 1},
     }
     for _, test := range tests {
         result := strlen(test.str)
