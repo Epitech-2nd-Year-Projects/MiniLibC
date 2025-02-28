@@ -5,8 +5,7 @@ package strlen
 // size_t strlen(const char *s);
 import "C"
 
-func strlen(str string) uint64 {
+func strlen(str string) uint {
     strc := C.CString(str)
-    result := C.strlen(strc)
-    return uint64(result)
+    return uint(C.strlen(strc))
 }
