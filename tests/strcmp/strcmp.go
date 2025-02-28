@@ -12,7 +12,6 @@ func strcmp(s1, s2 string) int {
     sc2 := C.CString(s2)
 	defer C.free(unsafe.Pointer(sc1))
 	defer C.free(unsafe.Pointer(sc2))
-    result := C.strcmp(sc1, sc2)
-    return int(result)
+    return int(C.strcmp(sc1, sc2))
 }
 
