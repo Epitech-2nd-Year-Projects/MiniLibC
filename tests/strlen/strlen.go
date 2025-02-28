@@ -1,12 +1,14 @@
 package strlen
 
 // #cgo LDFLAGS: -L../.. -lasm
+// #include <stdlib.h>
 //
 // size_t strlen(const char *s);
 import "C"
+import "unsafe"
 
-func strlen(str string) uint64 {
+func strlen(str string) uint {
     strc := C.CString(str)
-    result := C.strlen(strc)
-    return uint64(result)
+	defer C.free(unsafe.Pointer(strc))
+    return uint(C.strlen(strc))
 }

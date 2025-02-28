@@ -2,6 +2,7 @@ section .text
 global strncmp
 
 strncmp:
+    push    rbx             ; Save rbx (prevent crash for tests)
     xor     rax, rax        ; Init rax to null to return if needed 
     test    rdx, rdx        ; Check if n = 0
     jz      .end            ; If true return 0
@@ -21,8 +22,10 @@ strncmp:
 .difference:
     sub     al, bl          ; al - bl (calculate char diff)
     movsx   rax, al         ; Sign extend the result
+    pop     rbx             ; Restore rbx
     ret                     ; Return diff
 
 .end:
     xor     eax, eax        ; Return 0 (bc string are equal)
+    pop     rbx             ; Restore rbx
     ret
