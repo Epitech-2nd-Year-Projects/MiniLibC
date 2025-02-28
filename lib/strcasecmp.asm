@@ -2,6 +2,7 @@ section .text
 global strcasecmp
 
 strcasecmp:
+    push    rbx             ; Save rbx (prevent crash for tests)
     xor     rax, rax        ; Init rax to null (str1) 
     xor     rbx, rbx        ; Init rbx to null (str2)
 .process_str1:
@@ -32,8 +33,10 @@ strcasecmp:
 .difference:
     sub     eax, ebx        ; al - bl (calculate char diff)
     movsx   rax, eax        ; Sign extend the result
+    pop     rbx             ; Restore rbx
     ret                     ; Return diff
 
 .end:
     xor     eax, eax        ; Return 0 (bc string are equal)
+    pop rbx                 ; Restore rbx
     ret
