@@ -8,6 +8,7 @@ strpbrk:
     mov     al, byte [rdi]       ; al = curr char from s
     test    al, al               ; Check if curr char is null terminator
     jz      .not_found           ; Jump to not_found if true
+    mov     rsi, r8              ; Reset rsi to the start of accept
 
 .second_loop:
     mov     cl, byte [rsi]       ; cl = current character from accept
