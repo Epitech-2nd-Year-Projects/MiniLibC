@@ -3,11 +3,13 @@ global strcspn
 
 strcspn:
     xor     rax, rax        ; Init rax to null to return if needed
+    mov     r8, rsi         ; Save original reject pointer
 
 .first_loop:
     mov     dl, byte [rdi]  ; dl = curr char from s
     test    dl, dl          ; Check if curr char is null terminator
     jz      .end            ; Jump to end if true
+    mov     rsi, r8         ; Reset reject pointer to beginning
 
 .second_loop:
     mov     cl, byte [rsi]  ; cl = current character from reject
