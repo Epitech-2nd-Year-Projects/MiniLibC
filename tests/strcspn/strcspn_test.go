@@ -22,7 +22,7 @@ func TestStrcspn(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			result := strcspn(tc.s, tc.reject)
 			if result != tc.expected {
-				t.Errorf("strcspn(%s, %s) = %d, attendu %d", tc.s, tc.reject, result, tc.expected)
+				t.Errorf("strcspn(%s, %s) = %d, expected %d", tc.s, tc.reject, result, tc.expected)
 			}
 		})
 	}
