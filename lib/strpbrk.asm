@@ -2,12 +2,13 @@ section .text
 global strpbrk
 
 strpbrk:
-    xor     rax, rax             ; Init rax to null to return if needed
-    mov     r8, rsi              ; Save original accept pointer
+    push    r12                   ; Save r12
+    mov     r12, rsi              ; Save original accept pointer
 .first_loop:
     mov     al, byte [rdi]       ; al = curr char from s
     test    al, al               ; Check if curr char is null terminator
     jz      .not_found           ; Jump to not_found if true
+    mov     rsi, r12             ; Reset rsi to the start of accept
 
 .second_loop:
     mov     cl, byte [rsi]       ; cl = current character from accept
@@ -24,7 +25,10 @@ strpbrk:
 
 .found:
     mov     rax, rdi             ; Set return pointer to current position in s (match found)
+    pop     r12                  ; Restore r12
     ret
 
 .not_found:
+    xor     rax, rax             ; Return null
+    pop     r12                  ; Restore r12
     ret
