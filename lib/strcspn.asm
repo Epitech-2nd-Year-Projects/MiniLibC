@@ -15,7 +15,7 @@ strcspn:
     mov     cl, byte [rsi]  ; cl = current character from reject
     test    cl, cl          ; Check if curr char is null terminator
     jz      .next_char      ; Jump to next char if end of reject
-    cmp     dl, cl          ; Compare s character (dl) with reject character (cl)
+    cmp     dl, cl          ; Compare s char (dl) with reject char (cl)
     je      .end            ; Jump to end if char match
     inc     rsi             ; rsi++ increment reject pointer
     jmp     .second_loop    ; Repeat second loop

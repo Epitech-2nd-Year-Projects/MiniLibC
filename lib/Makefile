@@ -5,7 +5,8 @@ SRC	= strlen.asm \
 	  strcmp.asm \
 	  strncmp.asm \
 	  strcasecmp.asm \
-	  strcspn.asm
+	  strcspn.asm \
+	  strpbrk.asm
 
 RM	?=	rf -f	
 
