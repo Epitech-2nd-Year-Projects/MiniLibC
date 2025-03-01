@@ -8,9 +8,9 @@ import "C"
 import "unsafe"
 
 func strchr(s string, c int) string {
-	cs := C.CString(s)
-	defer C.free(unsafe.Pointer(cs))
-	result := C.strchr(cs, C.int(c))
+	sc := C.CString(s)
+	defer C.free(unsafe.Pointer(sc))
+	result := C.strchr(sc, C.int(c))
 	var ret string
 	if result != nil {
 		ret = C.GoString(result)

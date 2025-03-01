@@ -8,7 +8,7 @@ import "C"
 import "unsafe"
 
 func strlen(str string) uint {
-    strc := C.CString(str)
-	defer C.free(unsafe.Pointer(strc))
-    return uint(C.strlen(strc))
+    sc := C.CString(str)
+	defer C.free(unsafe.Pointer(sc))
+    return uint(C.strlen(sc))
 }

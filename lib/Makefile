@@ -4,7 +4,8 @@ SRC	= strlen.asm \
 	  memset.asm \
 	  strcmp.asm \
 	  strncmp.asm \
-	  strcasecmp.asm
+	  strcasecmp.asm \
+	  strcspn.asm
 
 RM	?=	rf -f	
 

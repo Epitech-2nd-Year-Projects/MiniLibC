@@ -10,6 +10,9 @@ build:
 test: build
 	go test -v ./...
 
+coverage: build 
+	go test -cover -coverprofile=coverage.out ./...  
+
 clean:
 	@$(MAKE) -C lib clean
 
