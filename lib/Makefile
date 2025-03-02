@@ -9,7 +9,8 @@ SRC	= strlen.asm \
 	  strpbrk.asm \
 	  strstr.asm  \
 	  memcpy.asm  \
-	  memmove.asm
+	  memmove.asm \
+	  index.asm
 
 RM	?=	rf -f	
 
